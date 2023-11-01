@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\dimap\source\repos\qwe\Notes\Notes\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Standart\" />
+  </ItemGroup>
+
 </Project>
