@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Notes.Standard;
-using System.Diagnostics;
+﻿using Notes.Standard;
 
 namespace Test.Standard;
 

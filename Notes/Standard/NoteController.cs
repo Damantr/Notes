@@ -29,7 +29,7 @@ public class NoteController : INoteController {
     /// Gets note by id to result.
     /// </summary>
     /// <param name="id">Id.</param>
-    /// <param name="result">Result. If note was not found result будет налл я не ебу как это перевести блять.</param>
+    /// <param name="result">Result. If note was not found result eventually will be null value будет налл я не ебу как это перевести блять.</param>
     /// <returns>True, if result is not null, otherwise false.</returns>
     public bool GetById(int id, out INote? result) {
         foreach (INote note in _notes) {
