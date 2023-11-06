@@ -26,12 +26,6 @@ internal enum Languages {
     EN,
 }
 
-// идентификаторы для строчек по которым мы получаем строчку на нужном языке.
-internal enum CLIStringDescriptors {
-    Hello,
-    OfferOfChangingLanguage,
-}
-
 internal class InterlanguageString {
     public InterlanguageString(string ruValue, string enValue) {
         _allStrings = new() {
@@ -69,19 +63,38 @@ internal class InterlanguageString {
     }
 }
 
+// идентификаторы для строчек по которым мы получаем строчку на нужном языке.
+internal enum CLIStringDescriptors {
+    DescriptionForAddNoteName,
+    DescriptionForAddNoteText,
+    AddableNoteNullErrorMessage,
+    NoteHasBeenAddedSuccess,
+}
+
 // наши строчки
 internal static class TextConstants {
     private static Dictionary<CLIStringDescriptors, InterlanguageString> _strings;
 
     static TextConstants() {
         _strings = new() {
-            { CLIStringDescriptors.Hello, new InterlanguageString(
-                ruValue: "Привет", 
-                enValue: "Hello") 
+            { CLIStringDescriptors.DescriptionForAddNoteName, new InterlanguageString(
+                ruValue: "Название заметки >>> ", 
+                enValue: "Note name >>> ") 
             },
-            { CLIStringDescriptors.OfferOfChangingLanguage, new InterlanguageString(
-                ruValue: "en - сменить язык", 
-                enValue: "ru - change language") 
+
+            { CLIStringDescriptors.DescriptionForAddNoteText, new InterlanguageString(
+                ruValue: "Текст заметки >>> ",
+                enValue: "Note text >>> ")
+            },
+
+            { CLIStringDescriptors.AddableNoteNullErrorMessage, new InterlanguageString(
+                ruValue: "Имя или текст заметки отсутствует. Заметка не добавлена.",
+                enValue: "Message name or text has not add. Note isn't added.")
+            },
+
+            { CLIStringDescriptors.NoteHasBeenAddedSuccess, new InterlanguageString(
+                ruValue: "Заметка была успешно добавлена.",
+                enValue: "Note has been added success.")
             },
         };
     }

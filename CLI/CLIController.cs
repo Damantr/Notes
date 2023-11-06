@@ -40,7 +40,17 @@ internal class CLIController {
         }
     }
 
-    public bool InjectCommand(CustomCommand command) {
+    public int Inject(IEnumerable<CustomCommand> commands) {
+        var result = 0;
+        foreach (var c in commands) {
+            if (Inject(c)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public bool Inject(CustomCommand command) {
         if (!_customCommands.Contains(command)) {
             _customCommands.Add(command);
             return true;

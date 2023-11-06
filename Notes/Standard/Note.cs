@@ -1,4 +1,5 @@
 ﻿using Notes.API;
+using System.Text;
 
 namespace Notes.Standard;
 
@@ -6,7 +7,7 @@ public class Note : INote {
     private readonly int _id;
     private string _title;
     private string _text;
-    private string _topic;
+    private string? _topic;
 
     /// <summary>
     /// Makes new note with cool title, interesting text and some topic.
@@ -14,7 +15,7 @@ public class Note : INote {
     /// <param name="title"></param>
     /// <param name="text"></param>
     /// <param name="topic"></param>
-    public Note(string title, string text, string topic) {
+    public Note(string title, string text, string? topic = null) {
         _id = IdCounter++;
 
         _title = title;
@@ -45,5 +46,20 @@ public class Note : INote {
     /// <summary>
     /// Note topic.
     /// </summary>
-    public string Topic => _topic;
+    public string? Topic => _topic;
+
+    public override string? ToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(
+            $"[Id]:\t\t{Id}\n" +
+            $"[Title]:\t{Title}\n" +
+            $"[Text]:\t\t{Text}\n"
+        );
+
+        if (Topic != null) {
+            sb.Append($"[Topic]:\t\t{Topic}\n");
+        }
+
+        return sb.ToString();
+    }
 }
