@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  *                       *--------------------*
  *                      /|  _____я на кубике /|
  *                     / |  |0 0|           / |
@@ -20,10 +19,17 @@
  *               *--------------------*
  */
 
+namespace CLI.Language;
 
 internal enum Languages {
     RU,
     EN,
+}
+
+// идентификаторы для строчек по которым мы получаем строчку на нужном языке.
+internal enum CLIStringDescriptors {
+    Hello,
+    OfferOfChangingLanguage,
 }
 
 internal class InterlanguageString {
@@ -65,13 +71,20 @@ internal class InterlanguageString {
 
 // наши строчки
 internal static class TextConstants {
+    private static Dictionary<CLIStringDescriptors, InterlanguageString> _strings;
+
     static TextConstants() {
         _strings = new() {
-            { CLIStringDescriptors.Hello, new InterlanguageString("Привет", "Hello") },
-            { CLIStringDescriptors.OfferOfChangingLanguage, new InterlanguageString("en - сменить язык", "ru - change language") },
+            { CLIStringDescriptors.Hello, new InterlanguageString(
+                ruValue: "Привет", 
+                enValue: "Hello") 
+            },
+            { CLIStringDescriptors.OfferOfChangingLanguage, new InterlanguageString(
+                ruValue: "en - сменить язык", 
+                enValue: "ru - change language") 
+            },
         };
     }
 
-    private static Dictionary<CLIStringDescriptors, InterlanguageString> _strings;
     public static IReadOnlyDictionary<CLIStringDescriptors, InterlanguageString> CLIStrings => _strings;
 }
