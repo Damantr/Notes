@@ -48,16 +48,35 @@ public class Note : INote {
     /// </summary>
     public string? Topic => _topic;
 
+    // TODO: доделать тустринг для INote
+    // исправить баг: при выводе после слова Text текст заметки сползает на строку ниже.
+    // сделать языки сюда доступными.
+
+    /// <summary>
+    /// Represents the basic note info.
+    /// </summary>
+    /// <returns>Good note look.</returns>
     public override string? ToString() {
         StringBuilder sb = new StringBuilder();
         sb.Append(
-            $"[Id]:\t\t{Id}\n" +
-            $"[Title]:\t{Title}\n" +
-            $"[Text]:\t\t{Text}\n"
+            $"===================================\n" +
+            $"[Id]:\t\t| {Id}\n" +
+            $"[Title]:\t| {Title}\n" +
+            $"- - - - - - - - -" +
+            $"\n[Text]:\t\t| "
         );
 
+        for (int i = 0 ; i < Text.Length; i++) {
+            if (Text[i] != '\n') {
+                sb.Append(Text[i]);
+            }
+            else if (Text[i] == '\n') {
+                sb.Append("\n\t\t| ");
+            }
+        }
+
         if (Topic != null) {
-            sb.Append($"[Topic]:\t\t{Topic}\n");
+            sb.Append($"[Topic]:\t\t| {Topic}\n");
         }
 
         return sb.ToString();

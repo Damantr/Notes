@@ -31,24 +31,25 @@ void GetAllNotes() {
             Console.WriteLine(note.ToString());
         }
         else {
-            Console.WriteLine(LocalToString(n));
+            Console.WriteLine(_localToString(n));
         }
     }
 
-    string? LocalToString(INote? note) {
+    string? _localToString(INote? note) {
         if (note == null) {
             return null;
         }
 
         StringBuilder sb = new StringBuilder();
         sb.Append(
-            $"[Id]:\t\t{note.Id}\n" +
-            $"[Title]:\t{note.Title}\n" +
-            $"[Text]:\t\t{note.Text}\n"
+            $"---------------------------------\n" + 
+            $"[Id]:\t\t| {note.Id}\n" +
+            $"[Title]:\t| {note.Title}\n" +
+            $"[Text]:\t\t| {note.Text}\n"
         );
 
         if (note.Topic != null) {
-            sb.Append($"[Topic]:\t\t{note.Topic}\n");
+            sb.Append($"[Topic]:\t\t| {note.Topic}\n");
         }
 
         return sb.ToString();
@@ -60,7 +61,16 @@ void AddNote() {
     var noteName = Console.ReadLine();
 
     Console.Write(cmndStrings[CLIStringDescriptors.DescriptionForAddNoteText]);
-    var noteText = Console.ReadLine();
+    var noteTextSB = new StringBuilder();
+    string? userEnter = string.Empty;
+    Console.WriteLine("\n");
+    do {
+        noteTextSB.AppendLine(userEnter);
+        Console.Write("\t\t");
+        userEnter = Console.ReadLine();
+    } while (userEnter != string.Empty);
+
+    var noteText = noteTextSB.ToString();
 
     if (noteText == null || noteName == null) {
         Console.WriteLine(cmndStrings[CLIStringDescriptors.AddableNoteNullErrorMessage]);

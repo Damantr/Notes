@@ -83,8 +83,8 @@ internal static class TextConstants {
             },
 
             { CLIStringDescriptors.DescriptionForAddNoteText, new InterlanguageString(
-                ruValue: "Текст заметки >>> ",
-                enValue: "Note text >>> ")
+                ruValue: "Текст заметки: ",
+                enValue: "Note text: ")
             },
 
             { CLIStringDescriptors.AddableNoteNullErrorMessage, new InterlanguageString(
